@@ -1,0 +1,25 @@
+{
+  "name": "unifesp-oo2021-projecto-final-backend",
+  "version": "1.0.0",
+  "description": "Projeto final de Orientaçao a Objetos 2021",
+  "main": "src/server.js",
+  "repository": "https://github.com/songohran/unifesp-oo2021-projeto-final.git",
+  "author": "Marcelo Bueno <diretec01@hotmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node ./src/server.js",
+    "start:dev": "nodemon ./src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^2.0.15"
+  }
+}

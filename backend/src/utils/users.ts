@@ -1,12 +1,12 @@
-import fs from "fs";
-import path from "path";
-import { User } from "../interfaces/user";
+import fs from 'fs';
+import path from 'path';
+import { User } from '../interfaces/User';
 
-export const usersDataFilePath = path.resolve(__dirname, "..", "data", "users.json");
+export const usersDataFilePath = path.resolve(__dirname, '..', 'data', 'users.json');
 
 export const createUsersDataFileIfNotExists = () => {
   if (!fs.existsSync(usersDataFilePath)) {
-    fs.writeFileSync(usersDataFilePath, "[]");
+    fs.writeFileSync(usersDataFilePath, '[]');
   }
 };
 

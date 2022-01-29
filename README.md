@@ -2,4 +2,4 @@
 
 Projeto final da uc Orientação a Objetos
 
-Use npm start rodar aplicação
+Use npm start para rodar a aplicação

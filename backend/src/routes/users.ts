@@ -32,6 +32,7 @@ usersRouter.post('/', async (req, res) => {
     return res.status(400).send('CPF já cadastrado');
   }
 
+  console.log(reqBody);
   const hashedPassword = await hash(reqBody.password, 8);
   reqBody.password = hashedPassword;
 

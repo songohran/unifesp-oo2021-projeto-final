@@ -5,12 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Cadastro</title>
-        <link rel="stylesheet" type="text/css" href="/frontend/public/assets/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     </head>
     <body>
         <div class="form-outer-wrapper | flex center">
             <div class="form-inner-wrapper | flex flex-center">
-                <div class="form | full-width">
+                <form class="form | full-width">
                     <div class="input-wrapper | full-width">
                         <label for="name">Nome</label>
                         <input
@@ -46,11 +46,23 @@
                     <div class="cpf-cep-wrapper | flex">
                         <div class="input-wrapper">
                             <label for="cpf">Cpf</label>
-                            <input class="full-width clean" type="text" name="cpf" id="cpf" />
+                            <input
+                                class="full-width clean"
+                                type="text"
+                                name="cpf"
+                                id="cpf"
+                                data-inputmask="'mask': '999.999.999-99'"
+                            />
                         </div>
                         <div class="input-wrapper">
                             <label for="cep">Cep</label>
-                            <input class="full-width clean" type="text" name="cep" id="cep" />
+                            <input
+                                class="full-width clean"
+                                type="text"
+                                name="cep"
+                                id="cep"
+                                data-inputmask="'mask': '99999-999'"
+                            />
                         </div>
                     </div>
                     <div class="address-wrapper | flex">
@@ -74,9 +86,16 @@
                         </button>
                         <button id="btn-cancel" class="btn | primary clean">Cancelar</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-        <script src="/frontend/public/assets/js/cadastro.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+        <script src="/assets/js/inputmask.min.js"></script>
+        <script src="/assets/js/inputmask.binding.js"></script>
+        <script src="/assets/js/cadastro.js"></script>
     </body>
 </html>

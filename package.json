@@ -1,5 +1,8 @@
 {
   "scripts": {
     "start": "cd ./backend && yarn start"
+  },
+  "devDependencies": {
+    "yarn": "~1.22.17"
   }
 }

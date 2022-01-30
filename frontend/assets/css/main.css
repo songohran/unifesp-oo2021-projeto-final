@@ -1,0 +1,171 @@
+:root {
+    --white: #fff;
+    --black: #000;
+    --gray: gray;
+    --primary-color: #2d8ce6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Utilities */
+
+.clean {
+    border: none;
+    outline: none;
+}
+
+.center {
+    margin-inline: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-width-v {
+    width: 100vw;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-height-v {
+    height: 100vh;
+}
+
+.full-viewport {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Buttons */
+
+.btn {
+    padding: 0.75rem 1.4rem;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn.primary {
+    color: var(--white);
+    background-color: var(--primary-color);
+}
+
+/* Header */
+
+.header {
+    padding: 2rem;
+    color: var(--white);
+    background-color: var(--gray);
+}
+
+/* Main */
+
+.main {
+    flex: 1;
+    width: 70%;
+    padding-top: 3rem;
+}
+
+.main > * {
+    margin-bottom: 2rem;
+}
+
+.main > div .btn + .btn {
+    margin-left: 1.5rem;
+}
+
+/* Footer */
+
+.footer {
+    height: 3rem;
+    border-top: 1px solid var(--black);
+}
+
+/* Form */
+
+.form-outer-wrapper {
+    width: 640px;
+}
+
+.form-inner-wrapper {
+    flex: 1;
+    margin: 4rem 0;
+}
+
+.form > * {
+    margin-bottom: 2.5rem;
+}
+
+.form .input-wrapper > label {
+    font-size: 10pt;
+}
+
+.form .input-wrapper > input {
+    border-bottom: 1px solid var(--black);
+    margin-top: 0.3rem;
+    font-size: 14pt;
+}
+
+.form .cpf-cep-wrapper .input-wrapper {
+    flex: 1;
+}
+
+.form .cpf-cep-wrapper .input-wrapper + * {
+    padding-left: 2.5rem;
+}
+
+.form .cpf-cep-wrapper {
+    justify-content: space-between;
+}
+
+.form .address-wrapper .input-wrapper {
+    flex: 4;
+}
+
+.form .address-wrapper .input-wrapper + * {
+    padding-left: 2.5rem;
+    flex: 1;
+}
+
+.form .address-wrapper {
+    justify-content: space-between;
+}
+
+.form .btns-wrapper {
+    margin: 0;
+    justify-content: flex-end;
+}
+
+.form .btns-wrapper .btn {
+    margin-left: 2.5rem;
+}

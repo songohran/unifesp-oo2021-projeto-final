@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cadastro</title>
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+        <script type="text/javascript" src="/assets/js/brython.js"></script>
+        <script type="text/javascript" src="/assets/js/brython_stdlib.js"></script>
+    </head>
+    <body onload="brython(1)">
+        <div class="form-outer-wrapper | flex center">
+            <div class="form-inner-wrapper | flex flex-center">
+                <form method="post" class="form | full-width">
+                    <div class="input-wrapper | full-width">
+                        <label for="name">Nome</label>
+                        <input
+                            class="full-width clean"
+                            type="text"
+                            name="name"
+                            id="name"
+                            autofocus
+                        />
+                    </div>
+                    <div class="input-wrapper | full-width">
+                        <label for="email">Email</label>
+                        <input class="full-width clean" type="email" name="email" id="email" />
+                    </div>
+                    <div class="input-wrapper | full-width">
+                        <label for="password">Senha</label>
+                        <input
+                            class="full-width clean"
+                            type="password"
+                            name="password"
+                            id="password"
+                        />
+                    </div>
+                    <div class="input-wrapper | full-width">
+                        <label for="password_confirm">Confirmar Senha</label>
+                        <input
+                            class="full-width clean"
+                            type="password"
+                            name="password_confirm"
+                            id="password_confirm"
+                        />
+                    </div>
+                    <div class="cpf-cep-wrapper | flex">
+                        <div class="input-wrapper">
+                            <label for="cpf">Cpf</label>
+                            <input
+                                class="full-width clean"
+                                type="text"
+                                name="cpf"
+                                id="cpf"
+                                data-inputmask="'mask': '999.999.999-99'"
+                            />
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="cep">Cep</label>
+                            <input
+                                class="full-width clean"
+                                type="text"
+                                name="cep"
+                                id="cep"
+                                data-inputmask="'mask': '99999-999'"
+                            />
+                        </div>
+                    </div>
+                    <div class="address-wrapper | flex">
+                        <div class="input-wrapper | full-width">
+                            <label for="street">Logradouro</label>
+                            <input class="full-width clean" type="text" name="street" id="street" />
+                        </div>
+                        <div class="input-wrapper | full-width">
+                            <label for="number">Número</label>
+                            <input
+                                class="full-width clean"
+                                type="number"
+                                name="number"
+                                id="number"
+                            />
+                        </div>
+                    </div>
+                    <div class="btns-wrapper | flex">
+                        <button id="btn-create-record" class="btn | primary clean">
+                            Cadastrar
+                        </button>
+                        <button id="btn-cancel" class="btn | primary clean">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+        <script src="/assets/js/inputmask.min.js"></script>
+        <script src="/assets/js/inputmask.binding.js"></script>
+        <script type="text/python" src="./cadastro.py"></script>
+    </body>
+</html>

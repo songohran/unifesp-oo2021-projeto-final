@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+        <script type="text/javascript" src="/assets/js/brython.js"></script>
+        <script type="text/javascript" src="/assets/js/brython_stdlib.js"></script>
+    </head>
+    <body onload="brython(1)">
+        <div class="form-outer-wrapper | flex center full-height-v">
+            <div class="form-inner-wrapper | flex flex-center">
+                <form
+                    method="post"
+                    class="form"
+                    style="border: 1px solid grey; padding: 2rem; border-radius: 4px"
+                >
+                    <div class="input-wrapper | full-width">
+                        <label for="cpf">Cpf</label>
+                        <input
+                            class="full-width clean"
+                            type="text"
+                            name="cpf"
+                            id="cpf"
+                            data-inputmask="'mask': '999.999.999-99'"
+                        />
+                    </div>
+                    <div class="input-wrapper | full-width">
+                        <label for="password">Senha</label>
+                        <input
+                            class="full-width clean"
+                            type="password"
+                            name="password"
+                            id="password"
+                        />
+                    </div>
+                    <div class="btns-wrapper | flex">
+                        <button id="btn-login" class="btn | primary clean">Entrar</button>
+                        <button
+                            id="btn-cancel"
+                            class="btn | primary clean"
+                            style="margin-left: 1rem"
+                        >
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+        <script src="/assets/js/inputmask.min.js"></script>
+        <script src="/assets/js/inputmask.binding.js"></script>
+        <script type="text/python" src="./login.py"></script>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "install": "python3 -m venv venv && pip install flask && pip install flask-cors",
+        "serve": ". venv/bin/activate && export FLASK_APP=src/app.py && flask run"
+    }
+}

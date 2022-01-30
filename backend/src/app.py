@@ -1,5 +1,6 @@
 from typing import TypedDict
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from entities.user import User
 from utils.crypt import compare_password, hash_password
@@ -7,6 +8,7 @@ from utils.data import read_users, write_users
 
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.get('/users')

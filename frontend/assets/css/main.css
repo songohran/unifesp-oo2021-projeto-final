@@ -30,6 +30,10 @@ body {
     margin-inline: auto;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .flex {
     display: flex;
 }
@@ -120,6 +124,10 @@ body {
 .form-inner-wrapper {
     flex: 1;
     margin: 4rem 0;
+}
+
+.form-inner-wrapper > * {
+    margin-top: 1rem;
 }
 
 .form > * {

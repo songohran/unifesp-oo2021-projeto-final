@@ -69,6 +69,7 @@ def login():
         for user in users:
             if user.cpf == login_info['cpf']:
                 finded_user = user
+                break
 
         if finded_user:
             user_pw = finded_user.password.encode()

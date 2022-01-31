@@ -2,7 +2,7 @@ import json
 
 from browser import document, alert, ajax
 
-from utils import go_to
+from utils import *
 
 
 def get_form_data_values(inputs):
@@ -65,3 +65,15 @@ btn_login.bind('click', lambda _: authenticate_user(inputs))
 
 btn_cancel = document['btn-cancel']
 btn_cancel.bind('click', lambda _: go_to('/index.html'))
+
+eye_icon = document['eye']
+closed_eye_icon = document['closed-eye']
+
+eye_icon.bind(
+    'click',
+    lambda _: toggle_password(eye_icon, closed_eye_icon, inputs['password'])
+)
+closed_eye_icon.bind(
+    'click',
+    lambda _: toggle_password(eye_icon, closed_eye_icon, inputs['password'])
+)

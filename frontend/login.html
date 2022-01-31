@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css?v=1.1" />
 
         <script type="text/javascript" src="/assets/js/brython.js"></script>
         <script type="text/javascript" src="/assets/js/brython_stdlib.js"></script>
@@ -13,11 +13,7 @@
     <body onload="brython(1)">
         <div class="form-outer-wrapper | flex center full-height-v">
             <div class="form-inner-wrapper | flex flex-center flex-column">
-                <form
-                    method="post"
-                    class="form"
-                    style="border: 1px solid rgb(136, 136, 136); padding: 2rem; border-radius: 4px"
-                >
+                <form method="post" class="form login-form">
                     <h1 class="text-center">Login</h1>
                     <div class="input-wrapper | full-width">
                         <label for="cpf">Cpf</label>
@@ -29,7 +25,7 @@
                             data-inputmask="'mask': '999.999.999-99'"
                         />
                     </div>
-                    <div class="input-wrapper | full-width">
+                    <div class="input-wrapper | full-width" style="position: relative">
                         <label for="password">Senha</label>
                         <input
                             class="full-width clean"
@@ -37,6 +33,33 @@
                             name="password"
                             id="password"
                         />
+                        <svg
+                            id="eye"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path
+                                fill-rule="evenodd"
+                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                        <svg
+                            id="closed-eye"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            version="1.1"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M11.83,9L15,12.16C15,12.11 15,12.05 15,12A3,3 0 0,0 12,9C11.94,9 11.89,9 11.83,9M7.53,9.8L9.08,11.35C9.03,11.56 9,11.77 9,12A3,3 0 0,0 12,15C12.22,15 12.44,14.97 12.65,14.92L14.2,16.47C13.53,16.8 12.79,17 12,17A5,5 0 0,1 7,12C7,11.21 7.2,10.47 7.53,9.8M2,4.27L4.28,6.55L4.73,7C3.08,8.3 1.78,10 1,12C2.73,16.39 7,19.5 12,19.5C13.55,19.5 15.03,19.2 16.38,18.66L16.81,19.08L19.73,22L21,20.73L3.27,3M12,7A5,5 0 0,1 17,12C17,12.64 16.87,13.26 16.64,13.82L19.57,16.75C21.07,15.5 22.27,13.86 23,12C21.27,7.61 17,4.5 12,4.5C10.6,4.5 9.26,4.75 8,5.2L10.17,7.35C10.74,7.13 11.35,7 12,7Z"
+                            />
+                        </svg>
                     </div>
                     <div class="btns-wrapper | flex">
                         <button id="btn-login" class="btn | primary clean">Entrar</button>

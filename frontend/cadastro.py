@@ -2,7 +2,7 @@ import json
 
 from browser import document, alert, ajax
 
-from utils import go_to
+from utils import *
 
 
 def get_form_data_values(inputs) -> dict:
@@ -132,3 +132,49 @@ btn_record.bind('click', lambda _: create_user_record(inputs))
 
 btn_cancel = document['btn-cancel']
 btn_cancel.bind('click', lambda _: go_to('/index.html'))
+
+eye_icons = dict()
+eye_icons['password'] = inputs['password'].parentElement.querySelector(
+    'svg#eye')
+eye_icons['password_confirm'] = inputs['password_confirm'].parentElement.querySelector(
+    'svg#eye')
+
+closed_eye_icons = dict()
+closed_eye_icons['password'] = inputs['password'].parentElement.querySelector(
+    'svg#closed-eye')
+closed_eye_icons['password_confirm'] = inputs['password_confirm'].parentElement.querySelector(
+    'svg#closed-eye')
+
+eye_icons['password'].bind(
+    'click',
+    lambda _: toggle_password(
+        eye_icons['password'],
+        closed_eye_icons['password'],
+        inputs['password']
+    )
+)
+closed_eye_icons['password'].bind(
+    'click',
+    lambda _: toggle_password(
+        eye_icons['password'],
+        closed_eye_icons['password'],
+        inputs['password']
+    )
+)
+
+eye_icons['password_confirm'].bind(
+    'click',
+    lambda _: toggle_password(
+        eye_icons['password_confirm'],
+        closed_eye_icons['password_confirm'],
+        inputs['password_confirm']
+    )
+)
+closed_eye_icons['password_confirm'].bind(
+    'click',
+    lambda _: toggle_password(
+        eye_icons['password_confirm'],
+        closed_eye_icons['password_confirm'],
+        inputs['password_confirm']
+    )
+)

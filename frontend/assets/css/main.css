@@ -134,6 +134,10 @@ body {
     margin-bottom: 2.5rem;
 }
 
+.form .input-wrapper {
+    position: relative;
+}
+
 .form .input-wrapper > label {
     font-size: 10pt;
 }
@@ -147,6 +151,25 @@ body {
     border-bottom: 1px solid var(--black);
     margin-top: 0.3rem;
     font-size: 14pt;
+}
+
+.form .input-wrapper > svg#eye {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    cursor: pointer;
+}
+
+.form .input-wrapper > svg#closed-eye {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    cursor: pointer;
 }
 
 .form .cpf-cep-wrapper .input-wrapper {
@@ -181,4 +204,10 @@ body {
 
 .form .btns-wrapper .btn {
     margin-left: 2.5rem;
+}
+
+.login-form {
+    border: 1px solid rgb(136, 136, 136);
+    padding: 2rem;
+    border-radius: 4px;
 }

@@ -47,6 +47,8 @@ def authenticate_user(inputs):
     if not data:
         return
 
+    cpf = data['cpf']
+
     # Definindo o tipo de conteúdo que será enviado para o backend
     headers = {'Content-Type': 'application/json'}
     # Transformando o data que é um dicionário em uma string em formato json
@@ -65,6 +67,8 @@ def authenticate_user(inputs):
 
         # Se o usuário for autenticado com sucesso o status da resposta será 200, e se o status for 200 voltará para página index.html
         if res.status == 200:
+            window.sessionStorage.setItem('login', True)
+            window.sessionStorage.setItem('user-cpf', cpf)
             go_to('/index.html')
 
     # Enviando requisição do tipo POST para o backend

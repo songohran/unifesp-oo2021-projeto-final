@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Ler Diário</title>
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css?v=1.3" />
+
+        <script type="text/javascript" src="/assets/js/brython.js"></script>
+        <script type="text/javascript" src="/assets/js/brython_stdlib.js"></script>
+    </head>
+    <body onload="brython(1)">
+        <div class="flex flex-column full-viewport" style="position: relative">
+            <button
+                id="btn-back-to-home"
+                class="btn | primary clean"
+                style="position: relative; border-radius: 0"
+            >
+                Voltar
+            </button>
+            <div class="main | flex flex-column center" style="text-align: justify"></div>
+        </div>
+        <script type="text/python" src="./ler-diario.py"></script>
+    </body>
+</html>

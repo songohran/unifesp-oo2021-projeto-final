@@ -1,11 +1,12 @@
 import json
+import re
 
 from browser import document, alert, ajax
 
 from utils import *
 
 
-def get_form_data_values(inputs) -> dict:
+def get_form_data_values(inputs: dict) -> dict:
     '''
     Função que recebe um dicionário de inputs e retorna um outro dicionário contendo os valores do inputs de nome, email, senha, confirmar senha, cpf, cep, logradouro e número
     '''
@@ -21,38 +22,93 @@ def get_form_data_values(inputs) -> dict:
     }
 
 
-def validate_form_data(inputs):
+def validate_cpf(cpf: str) -> bool:
+    '''
+    Função que verifica se o cpf é válido
+    '''
+    # Remove do cpf tudo que não for número
+    cpf = re.sub(r'\D', '', cpf)
+
+    # Verifica o tamanho do cpf, se for diferente de 11 então é inválido
+    if len(cpf) != 11:
+        return False
+
+    # Variavel que irá guardar primeiro digito verifVariavel que irá guardar segundo digito icador
+    first_verifying_digit = None
+    # Variavel que irá guardar segundo digito verificador
+    second_verifying_digit = None
+
+    # Soma da multiplicação dos 9 primeiros digitos
+    for i, char in enumerate(cpf[:9]):
+        if first_verifying_digit == None:
+            first_verifying_digit = int(char) * 10
+            continue
+
+        first_verifying_digit += int(char) * (10 - i)
+
+    # Resto da divisão por 11
+    first_verifying_digit %= 11
+    first_verifying_digit = 11 - first_verifying_digit
+    # Se for maior que 10 o digito verificador é 0 senão é o que foi encontrado mesmo
+    first_verifying_digit = first_verifying_digit if first_verifying_digit < 10 else 0
+
+    # Verificando se o penúltimo digito do cpf bate com primeiro digito verificador
+    if int(cpf[-2]) != first_verifying_digit:
+        return False
+
+    # Soma da multiplicação dos 10 primeiros digitos
+    for i, char in enumerate(cpf[:10]):
+        if second_verifying_digit == None:
+            second_verifying_digit = int(char) * 11
+            continue
+
+        second_verifying_digit += int(char) * (11 - i)
+
+    # Resto da divisão por 11
+    second_verifying_digit %= 11
+    second_verifying_digit = 11 - second_verifying_digit
+    # Se for maior que 10 o digito verificador é 0 senão é o que foi encontrado mesmo
+    second_verifying_digit = second_verifying_digit if second_verifying_digit < 10 else 0
+
+    # Verificando se o último digito do cpf bate com segundo digito verificador
+    if int(cpf[-1]) != second_verifying_digit:
+        return False
+
+    return True
+
+
+def validate_form_data(inputs: dict):
     '''
     Função que garante que nenhum dos campos estejam vazios
     '''
     data = get_form_data_values(inputs)
 
     if not data['name']:
-        alert("O campo nome não pode estar vazio!")
+        alert('O campo nome não pode estar vazio!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['name'].classList.add('input-error')
         return
 
     if not data['email']:
-        alert("O campo email não pode estar vazio!")
+        alert('O campo email não pode estar vazio!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['email'].classList.add('input-error')
         return
 
     if not data['password']:
-        alert("O campo senha não pode estar vazio!")
+        alert('O campo senha não pode estar vazio!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['password'].classList.add('input-error')
         return
 
     if not data['password_confirm']:
-        alert("O campo confirmar senha não pode estar vazio!")
+        alert('O campo confirmar senha não pode estar vazio!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['password_confirm'].classList.add('input-error')
         return
 
     if data['password'] != data['password_confirm']:
-        alert("As duas senhas tem que ser idênticas!")
+        alert('As duas senhas tem que ser idênticas!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['password'].classList.add('input-error')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
@@ -60,25 +116,31 @@ def validate_form_data(inputs):
         return
 
     if not data['cpf']:
-        alert("O campo cpf senha não pode estar vazio!")
+        alert('O campo cpf não pode estar vazio!')
+        # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
+        inputs['cpf'].classList.add('input-error')
+        return
+
+    if not validate_cpf(data['cpf']):
+        alert('Cpf digitado não é válido')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['cpf'].classList.add('input-error')
         return
 
     if not data['cep']:
-        alert("O campo cep senha não pode estar vazio!")
+        alert('O campo cep não pode estar vazio!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['cep'].classList.add('input-error')
         return
 
     if not data['street']:
-        alert("O campo logradouro senha não pode estar vazio!")
+        alert('O campo logradouro não pode estar vazio!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['street'].classList.add('input-error')
         return
 
     if not data['number']:
-        alert("O campo número senha não pode estar vazio!")
+        alert('O campo número não pode estar vazio!')
         # Adicionando classe input-error ao input, essa classe deixa o input vermelhinho
         inputs['number'].classList.add('input-error')
         return

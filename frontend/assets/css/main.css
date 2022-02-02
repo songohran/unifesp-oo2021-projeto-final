@@ -68,6 +68,10 @@ body {
     height: 100vh;
 }
 
+.none {
+    display: none;
+}
+
 /* Buttons */
 
 .btn {
@@ -104,8 +108,8 @@ body {
     margin-bottom: 2rem;
 }
 
-.main > div .btn + .btn {
-    margin-left: 1.5rem;
+.main > div .btn {
+    margin-right: 1.5rem;
 }
 
 /* Footer */

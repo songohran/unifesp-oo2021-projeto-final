@@ -30,6 +30,20 @@ class User:
 
         return users
 
+    def to_list(users: List[User]) -> list:
+        '''
+        Função que transforma um lista da classe User em uma lista genérica
+        '''
+        users_list = []
+
+        for user in users:
+            try:
+                users_list.append(User.to_dict(user))
+            except:
+                pass
+
+        return users_list
+
     def from_dict(user: dict) -> User:
         '''
         Função que transforma um dicionário genérico em um objeto da classe User

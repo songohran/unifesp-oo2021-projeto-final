@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 from entities.user import User
+from entities.diary import Diary, DiaryEntry
 from utils.crypt import compare_password, hash_password
 import utils.data as data
 
@@ -66,6 +67,9 @@ def add_user():
         hashed_password = hash_password(new_user.password)
         # Convertendo senha criptografada de bytes para string
         new_user.password = str(hashed_password)[2:-1]
+
+        # Criação de diário para o usuário
+        data.create_diary(new_user)
 
         # Adicionado o novo usuário na lista de usuários
         users.append(new_user)
@@ -132,8 +136,66 @@ def login():
     return 'Requisição deve ser em formato JSON', 415
 
 
+@app.get('/diaries')
+def get_diaries():
+    return jsonify(data.read_diaries())
+
+
+@app.get('/diaries/<string:user_cpf>')
+def get_diary_by_user_cpf(user_cpf: str):
+    diaries = Diary.from_list(data.read_diaries())
+    finded_diary = None
+
+    for diary in diaries:
+        if diary.user_cpf == user_cpf:
+            finded_diary = diary
+            break
+
+    if finded_diary:
+        return jsonify(Diary.to_dict(finded_diary)), 200
+
+    return 'Diário não encontrado', 404
+
+
+@app.put('/diaries/entries/<string:user_cpf>')
+def update_entries(user_cpf: str):
+    if request.is_json:
+        try:
+            new_entry = DiaryEntry.from_dict(request.get_json())
+        except KeyError:
+            return 'Requisição não contém os dados necessários', 400
+
+        diaries = Diary.from_list(data.read_diaries())
+        finded_diary = None
+
+        for diary in diaries:
+            if diary.user_cpf == user_cpf:
+                finded_diary = diary
+                break
+
+        if finded_diary:
+            entry_overwrited = False
+
+            for entry in finded_diary.entries:
+                if entry.date == new_entry.date:
+                    entry.content = new_entry.content
+                    entry_overwrited = True
+                    break
+
+            if not entry_overwrited:
+                finded_diary.entries.append(new_entry)
+
+            data.write_diaries(diaries)
+
+            return 'Diário atualizado com sucesso', 200
+
+        return 'Diário não encontrado', 404
+
+    return 'Requisição deve ser em formato JSON', 415
+
+
 if __name__ == '__main__':
     # Cria todo setup e arquivos necessários da pasta data
     data.setup()
     # Inicia o servidor da aplicação
-    app.run()
+    app.run(debug=True)

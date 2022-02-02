@@ -1,6 +1,7 @@
 {
     "scripts": {
-        "install": "python3 -m venv venv && pip install flask && pip install flask-cors",
-        "serve": ". venv/bin/activate && export FLASK_APP=src/app.py && flask run"
+        "setup": "python3 -m venv venv && . venv/bin/activate && pip install flask && pip install flask-cors",
+        "windows:setup": "pip install virtualenv && virtualenv venv && venv\\Scripts\\activate && pip install flask && pip install flask-cors",
+        "start": "python3 ./src/app.py"
     }
 }

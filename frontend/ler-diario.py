@@ -8,6 +8,7 @@ def bootstrap():
     main = document.querySelector('.main')
     btn_back_to_home = document['btn-back-to-home']
     btn_back_to_home.bind('click', lambda _: go_to('/index.html'))
+    loader_animation = document.querySelector('.main > .loader')
 
     cpf = window.sessionStorage.getItem('user-cpf')
 
@@ -19,6 +20,8 @@ def bootstrap():
         return
 
     def oncomplete(res):
+        loader_animation.style.display = 'none'
+
         entries = res.json['entries']
         entries = entries.sort(key=lambda e: e['date'])
 
